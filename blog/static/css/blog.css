@@ -1,0 +1,42 @@
+a:hover{
+    text-decoration: none;
+}
+
+.navbar-brand{
+    color: #FF8833;
+    font-family: 'Lobster Two', cursive;
+}
+.page-header {
+    background-color: #C25100;
+    margin-top: 0;
+    padding: 20px 20px 20px 40px;
+}
+
+.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
+    color: #ffffff;
+    text-decoration: none;
+}
+.limit-ch-title{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.limit-ch{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.top-menu, .top-menu:hover, .top-menu:visited {
+    color: #ffffff;
+    font-size: 26pt;
+}
+.breadcrumb-item+.breadcrumb-item::before {
+    display: inline-block;
+    padding: 20px;
+    color: #ffffff;
+    content: "/";
+}

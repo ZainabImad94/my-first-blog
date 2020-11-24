@@ -1,0 +1,61 @@
+{% extends 'blog/base.html' %}
+{% block breadcrumb %}
+<li class="breadcrumb-item">View Blog</li>
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 post mt-5 mb-5">
+            <div class="card bg-light">
+                <div class="card-header">
+                    <h3 class="card-title">{{ post.title }}</h3>
+                    {% if post.published_date %}
+                    <p class="card-text">
+                        <small class="text-muted">
+                        {{ post.published_date }}
+
+                        </small>
+                        {% if user == post.author %}
+                            <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}">
+                                <i class="fa fa-pencil-square" aria-hidden="true"></i>
+                            </a>
+                            {% endif %}
+                    </p>
+                    {% endif %}
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p>{{ post.text|linebreaksbr }}</p>
+                        <footer class="blockquote-footer">Published by <cite title="Source Title">
+                            {{ post.author }}</cite>
+                        </footer>
+                    </blockquote>
+               <img class="card-img-bottom" src="{{ post.image.url }}" alt="Card image cap">
+           </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">{{ post.title }}</h5>
+    <p class="card-text">{{ post.text|linebreaksbr }}</p>
+      {% if post.published_date %}
+    <p class="card-text"><small class="text-muted">
+                        {{ post.published_date }}
+</small></p>
+                    {% endif %}
+  </div>
+  <img class="card-img-bottom" src="{{ post.image.url }}" alt="Card image cap">
+</div>
+
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+      <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+    </blockquote>
+      {% if user == post.author %}
+                    <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}">
+                        <i class="fa fa-pencil-square" aria-hidden="true"></i>
+                    </a>
+                    {% endif %}

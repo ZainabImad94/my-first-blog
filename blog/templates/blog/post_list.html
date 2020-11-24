@@ -1,0 +1,30 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<div class="container p-4 shadow-lg mt-3">
+    <div class="row ">
+        {% for post in posts %}
+        <div class="col-lg-4">
+            <div class="card mb-3" style="height: 500px;">
+                <img class="card-img-top" src="{{ post.image.url }}" alt="Card image cap" height="200">
+                <div class="card-body" >
+                    <h3 class="card-title " ><a class="text-info limit-ch-title" href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ post.author }}</h6>
+                </div>
+                <div class="card-body">
+                    <p class="card-text limit-ch" >{{ post.text }}</p>
+                </div>
+                <div class="card-body">
+                    <a href="{% url 'post_detail' pk=post.pk %}" class="card-link btn btn-primary">Read more</a>
+                    {% if user == post.author %}
+                    <a href="{% url 'post_edit' pk=post.pk %}" class="card-link btn btn-outline-info">Edit your Blog</a>
+                    {% endif %}
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">published: {{ post.published_date }}</small>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
